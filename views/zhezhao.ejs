@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #box{
+            width: 1000px;
+            height: 500px;
+            background-image: url("./img.jpg"); /* 背景图片 */
+        }
+        #box div{
+            float: left;
+            width: 48px;
+            height: 48px;
+            border:1px solid #999;
+            background-color: blanchedalmond;
+        }
+    </style>
+</head>
+<body>
+    <div id="box"></div>
+
+    <script>
+        var str = "";
+        for(var i = 0; i < 200; i++){
+            str += "<div>"+(i+1)+"</div>";
+        }
+        var oBox = document.getElementById('box');
+        oBox.innerHTML = str;
+        
+        var divs = oBox.getElementsByTagName('div');
+        for(var i = 0; i < divs.length; i++){
+            divs[i].onmouseover = function(){
+                //this.style.backgroundColor = "rgba(0,0,0,0)";
+				this.innerHTML="";
+                this.style.background = "none";
+            }
+        }
+    
+    </script>
+</body>
+</html>

@@ -1,0 +1,1280 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <title>index</title>
+
+    <!-- 基本样式 -->
+
+    <style>
+        /*layout*/
+
+        body {
+
+            margin: 0;
+
+            padding: 0;
+
+        }
+
+        .clearfix:after {
+
+            content: '';
+
+            display: block;
+
+            height: 0;
+
+            line-height: 0;
+
+            clear: both;
+
+            zoom: 1;
+
+        }
+
+        .wrap {
+
+            width: 1000px;
+
+            margin: 0 auto;
+
+            position: relative;
+
+        }
+
+        .top {
+
+            height: 30px;
+
+            background-color: #f5f5f5;
+
+        }
+
+        .header {
+
+            height: 92px;
+
+        }
+
+        .nav {
+
+            height: 36px;
+
+            background-color: #60bff2;
+
+        }
+
+        .banner {
+
+            width: 1000px;
+
+            margin: 0 auto;
+
+            height: 414px;
+
+            padding: 9px 0 0 198px;
+
+            box-sizing: border-box;
+
+        }
+
+        .footer {
+
+            height: 132px;
+
+            padding: 25px 0;
+
+            background-color: #eceef2;
+
+        }
+
+        /*base*/
+
+        p {
+
+            margin: 0;
+
+            padding: 0;
+
+            display: inline-block;
+
+        }
+
+        a {
+
+            text-decoration: none;
+
+        }
+
+        select,
+        input {
+
+            border: none;
+
+            outline: none;
+
+        }
+
+        .right {
+
+            float: right !important;
+
+        }
+
+
+
+        /*top模块样式*/
+
+        .top {
+
+            line-height: 30px;
+
+            font-size: 13px;
+
+            color: #868686;
+
+        }
+
+        .top .call {
+
+            float: left;
+
+            padding-left: 20px;
+
+            background: url(http://climg.mukewang.com/58c61b9d0001e02d00170017.png) no-repeat center left;
+
+        }
+
+        .top .welcome {
+
+            float: right;
+
+        }
+
+        .top a {
+
+            color: #2da5e1;
+
+            padding-left: 10px;
+
+        }
+
+
+
+        /*header模块样式*/
+
+        .header .logo {
+
+            width: 402px;
+
+            height: 74px;
+
+            padding: 9px 0;
+
+            display: inline-block;
+
+        }
+
+        .header .logo img {
+
+            width: 100%;
+
+            height: 100%;
+
+        }
+
+        .header .search {
+
+            width: 326px;
+
+            height: 38px;
+
+            position: absolute;
+
+            right: 0;
+
+            top: 29px;
+
+        }
+
+
+
+        /*nav模块样式*/
+
+        .nav .link {
+
+            display: inline-block;
+
+            float:left;
+
+            margin-left: 30px;
+
+            line-height: 36px;
+
+            color: #fff;
+
+            font-size: 16px;
+
+            min-width: 80px;
+
+            text-align: center;
+
+        }
+
+        .nav .link_focus {
+
+            color: #fff;
+
+            background-color: #1fa4f0;
+
+            padding: 0 20px;
+
+        }
+
+        .nav a:hover {
+
+            color: #d7f3ff;
+
+        }
+
+        .nav .menu {
+
+            width: 130px;
+
+            /*padding-right:30px;*/
+
+            background-color: #1fa4f0;
+
+            position: relative;
+
+        }
+
+        .nav .menu .menu-list {
+
+            background-color: #1fa4f0;
+
+            width: 100%;
+
+            height: 423px;
+
+            position: absolute;
+
+            left: 0;
+
+            top: 36px;
+
+        }
+
+
+
+        /*热门科室*/
+
+        .hot {
+
+            margin-bottom: 20px;
+
+        }
+
+        .hot .title {
+
+            width: 100%;
+
+            height: 30px;
+
+            margin-top: 30px;
+
+            padding-left: 19px;
+
+            padding-top: 7px;
+
+            color: #fff;
+
+            background: url(http://climg.mukewang.com/58c61a4f0001967a01380030.jpg) no-repeat center left;
+
+        }
+
+        .hot .content {
+
+            width: 100%;
+
+            border: 1px solid #ddd;
+
+            height: 109px;
+
+        }
+
+        .hot .left {
+
+            width: 70%;
+
+            padding-left: 2%;
+
+            padding-top: 2%;
+
+            float: left;
+
+        }
+
+        .hot .right {
+
+            width: 28%;
+
+            float: right;
+
+            font-size: 14px;
+
+            position: relative;
+
+        }
+
+        .more-btn {
+
+            position: absolute;
+
+            right: 85px;
+
+            top: 62px;
+
+            text-decoration: underline;
+
+        }
+
+        .hot span {
+
+            display: inline-block;
+
+            width: 112px;
+
+            height: 42px;
+
+            color: #666;
+
+            font-size: 13px;
+
+        }
+
+        .hot span.more {
+
+            display: none;
+
+        }
+
+
+
+        /*具体导航*/
+
+        .detail .left {
+
+            float: left;
+
+            border: 1px solid #ddd;
+
+            width: 20%;
+
+            margin-right: 2%;
+
+        }
+
+        .detail .left div {
+
+            height: 24px;
+
+            width: 100%;
+
+            padding-left: 41px;
+
+            padding-top: 12px;
+
+            font-size: 13px;
+
+            position: relative;
+
+        }
+
+        .detail .item:nth-child(2) .item-d:before {
+
+            background-position-y: -22px;
+
+        }
+
+        .detail .item:nth-child(3) .item-d:before {
+
+            background-position-y: -44px;
+
+        }
+
+        .detail .item:nth-child(4) .item-d:before {
+
+            background-position-y: -66px;
+
+        }
+
+        .detail .item:nth-child(5) .item-d:before {
+
+            background-position-y: -88px;
+
+        }
+
+        .detail .item:nth-child(6) .item-d:before {
+
+            background-position-y: -110px;
+
+        }
+
+        .detail .item:nth-child(7) .item-d:before {
+
+            background-position-y: -132px;
+
+        }
+
+        .detail .item:nth-child(8) .item-d:before {
+
+            background-position-y: -154px;
+
+        }
+
+        .detail .item:nth-child(9) .item-d:before {
+
+            background-position-y: -176px;
+
+        }
+
+        .detail .item:nth-child(10) .item-d:before {
+
+            background-position-y: -198px;
+
+        }
+
+        .item-d {
+
+            color: #666;
+
+        }
+
+        .item-d:before {
+
+            content: '';
+
+            display: block;
+
+            width: 22px;
+
+            height: 21px;
+
+            position: absolute;
+
+            left: 10px;
+
+            top: 10px;
+
+            background: url(http://climg.mukewang.com/58c61b610001c58300440638.jpg) 0 0 no-repeat;
+
+        }
+
+        .item-d:after {
+
+            content: '>';
+
+            display: block;
+
+            width: 22px;
+
+            height: 21px;
+
+            position: absolute;
+
+            right: 46px;
+
+            top: 10px;
+
+            color: #888;
+
+        }
+
+        .detail .right {
+
+            float: right;
+
+            border: 1px solid #ddd;
+
+            width: 76%;
+
+            padding: 5px;
+
+            padding-top: 30px;
+
+            margin-bottom: 30px;
+
+        }
+
+        .block {
+
+            padding: 5px;
+
+            padding-top: 0;
+
+        }
+
+        .block .title {
+
+            color: #60bff2;
+
+            width: 100%;
+
+            height: 33px;
+
+            border-bottom: 1px dashed #ddd;
+
+            font-size: 14px;
+
+            margin-bottom: 10px;
+
+            text-indent: 24px;
+
+        }
+
+        .block .content {
+
+            padding: 0 20px;
+
+        }
+
+        .block .content span {
+
+            display: inline-block;
+
+            width: 125px;
+
+            height: 42px;
+
+            color: #666;
+
+            font-size: 13px;
+
+        }
+
+        /*底部*/
+
+        .footer {
+
+            height: 70px;
+
+            line-height: 70px;
+
+            text-align: center;
+
+            font-size: 12px;
+
+            color: #666;
+
+            clear: both;
+
+        }
+
+
+
+        /*搜索*/
+
+        .ui-search {
+
+            background: url(http://climg.mukewang.com/58c61b7e00012b9303260038.jpg) center no-repeat;
+
+            font-size: 14px;
+
+            color: #fff;
+
+        }
+
+        .ui-search-selected {
+
+            width: 70px;
+
+            height: 38px;
+
+            line-height: 38px;
+
+            position: absolute;
+
+            left: 0;
+
+            top: 0;
+
+            text-indent: 14px;
+
+        }
+
+        .ui-search-select-list {
+
+            display: none;
+
+            position: absolute;
+
+            width: 67px;
+
+            line-height: 24px;
+
+            background-color: #fff;
+
+            box-shadow: 3px 3px 5px rgba(0, 0, 0, .2);
+
+            left: 2px;
+
+            top: 36px;
+
+            z-index: 2;
+
+        }
+
+        .ui-search-select-list a {
+
+            display: block;
+
+            color: #a5a2a2;
+
+            text-align: center;
+
+        }
+
+        .ui-search-select-list a:hover {
+
+            background-color: #ebeef5;
+
+        }
+
+        .ui-search-input {
+
+            width: 208px;
+
+            height: 26px;
+
+            position: absolute;
+
+            top: 5px;
+
+            left: 71px;
+
+            line-height: 26px;
+
+            font-size: 13px;
+
+            color: #a5a2a2;
+
+        }
+
+        .ui-search-submit {
+
+            display: block;
+
+            position: absolute;
+
+            right: 0;
+
+            top: 1px;
+
+            width: 40px;
+
+            height: 36px;
+
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <div id="top" class="top">
+
+        <div class="wrap">
+
+            <p class="call">010-114/116114电话预约</p>
+
+            <p class="welcome">欢迎来到城市医院预约挂号统一平台&nbsp;请&nbsp;
+
+                <a href="">登录</a>
+
+                <a href="">注册</a>&nbsp;&nbsp;&nbsp;&nbsp;
+
+                <a href="">帮助中心</a></p>
+
+        </div>
+
+    </div>
+
+
+
+    <div id="header" class="header">
+
+        <div class="wrap">
+
+            <a href="#" class="logo"><img src="http://climg.mukewang.com/58c61b2f0001f5c008400172.png" alt=""></a>
+
+            <div class="search ui-search">
+
+                <div class="ui-search-selected">医院</div>
+
+                <div class="ui-search-select-list">
+
+                    <a href="#1">科室</a>
+
+                    <a href="#1">疾病</a>
+
+                    <a href="#1">医院</a>
+
+                </div>
+
+                <input type="text" name="search-content" class="ui-search-input" placeholder="请输入搜索内容">
+
+                <a href="#" class="ui-search-submit">&nbsp;</a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+    <div id="nav" class="nav">
+
+        <div class="wrap">
+
+            <a href="" class='link'>首页</a>
+
+            <a href="" class='link'>按医院挂号</a>
+
+            <a href="" class='link menu'>按科室挂号</a>
+
+            <a href="" class='link'>按疾病挂号</a>
+
+            <a href="" class='link'>最新公告</a>
+
+            <a href="" class='link right'>社会知名医院</a>
+
+        </div>
+
+    </div>
+
+
+
+    <div id="hot" class="hot">
+
+        <div class="wrap">
+
+            <div class="title">热门科室</div>
+
+            <div class="content">
+
+                <div class="left">
+
+                    <span>神经外科</span>
+
+                    <span>妇科</span>
+
+                    <span>产科</span>
+
+                    <span>儿科</span>
+
+                    <span>骨科</span>
+
+                    <span>眼科</span>
+
+                    <span>耳鼻喉</span>
+
+                    <span>肿瘤外科</span>
+
+                    <span>肿瘤综合科</span>
+
+                    <span>皮肤美容</span>
+
+                    <span>心理咨询科</span>
+
+                    <span>中医科</span>
+
+                    <span class="more">中西医结合科</span>
+
+                    <span class="more">传染病科</span>
+
+                    <span class="more">结核病科</span>
+
+                    <span class="more">介入医学科</span>
+
+                    <span class="more">康复医学科</span>
+
+                    <span class="more">运动医学科</span>
+
+                    <span class="more">麻醉医学科</span>
+
+                    <span class="more">职业病科</span>
+
+                    <span class="more">地方病科</span>
+
+                    <span class="more">营养科</span>
+
+                    <span class="more">医学影像学</span>
+
+                    <span class="more">病理科</span>
+
+                    <span class="more">其他科室</span>
+
+                </div>
+
+                <div class="right">
+
+                    <a href="#" class="more-btn">展开全部</a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+    <div class="detail">
+
+        <div class="wrap">
+
+            <div class="left">
+
+                <div class="item"><a href="#" class="item-d">神经外科</a></div>
+
+                <div class="item"><a href="#" class="item-d">妇科</a></div>
+
+                <div class="item"><a href="#" class="item-d">产科</a></div>
+
+                <div class="item"><a href="#" class="item-d">儿科</a></div>
+
+                <div class="item"><a href="#" class="item-d">骨科</a></div>
+
+                <div class="item"><a href="#" class="item-d">眼科</a></div>
+
+                <div class="item"><a href="#" class="item-d">耳鼻喉</a></div>
+
+                <div class="item"><a href="#" class="item-d">肿瘤外科</a></div>
+
+                <div class="item"><a href="#" class="item-d">肿瘤综合科</a></div>
+
+                <div class="item"><a href="#" class="item-d">皮肤美容</a></div>
+
+            </div>
+
+            <div class="right">
+
+                <div class="block">
+
+                    <div class="title">神经外科</div>
+
+                    <div class="content">
+
+                        <span>神经外科0</span>
+
+                        <span>神经外科1</span>
+
+                        <span>神经外科2</span>
+
+                        <span>神经外科3</span>
+
+                        <span>神经外科4</span>
+
+                        <span>神经外科5</span>
+
+                        <span>神经外科6</span>
+
+                        <span>神经外科7</span>
+
+                        <span>神经外科8</span>
+
+                        <span>神经外科9</span>
+
+                    </div>
+
+                </div>
+
+                <div class="block">
+
+                    <div class="title">神经外科</div>
+
+                    <div class="content">
+
+                        <span>神经外科0</span>
+
+                        <span>神经外科1</span>
+
+                        <span>神经外科2</span>
+
+                        <span>神经外科3</span>
+
+                        <span>神经外科4</span>
+
+                        <span>神经外科5</span>
+
+                        <span>神经外科6</span>
+
+                        <span>神经外科7</span>
+
+                        <span>神经外科8</span>
+
+                        <span>神经外科9</span>
+
+                    </div>
+
+                </div>
+
+                <div class="block">
+
+                    <div class="title">神经外科</div>
+
+                    <div class="content">
+
+                        <span>神经外科0</span>
+
+                        <span>神经外科1</span>
+
+                        <span>神经外科2</span>
+
+                        <span>神经外科3</span>
+
+                        <span>神经外科4</span>
+
+                        <span>神经外科5</span>
+
+                        <span>神经外科6</span>
+
+                        <span>神经外科7</span>
+
+                        <span>神经外科8</span>
+
+                        <span>神经外科9</span>
+
+                    </div>
+
+                </div>
+
+                <div class="block">
+
+                    <div class="title">神经外科</div>
+
+                    <div class="content">
+
+                        <span>神经外科0</span>
+
+                        <span>神经外科1</span>
+
+                        <span>神经外科2</span>
+
+                        <span>神经外科3</span>
+
+                        <span>神经外科4</span>
+
+                        <span>神经外科5</span>
+
+                        <span>神经外科6</span>
+
+                        <span>神经外科7</span>
+
+                        <span>神经外科8</span>
+
+                        <span>神经外科9</span>
+
+                    </div>
+
+                </div>
+
+                <div class="block">
+
+                    <div class="title">神经外科</div>
+
+                    <div class="content">
+
+                        <span>神经外科0</span>
+
+                        <span>神经外科1</span>
+
+                        <span>神经外科2</span>
+
+                        <span>神经外科3</span>
+
+                        <span>神经外科4</span>
+
+                        <span>神经外科5</span>
+
+                        <span>神经外科6</span>
+
+                        <span>神经外科7</span>
+
+                        <span>神经外科8</span>
+
+                        <span>神经外科9</span>
+
+                    </div>
+
+                </div>
+
+                <div class="block">
+
+                    <div class="title">神经外科</div>
+
+                    <div class="content">
+
+                        <span>神经外科0</span>
+
+                        <span>神经外科1</span>
+
+                        <span>神经外科2</span>
+
+                        <span>神经外科3</span>
+
+                        <span>神经外科4</span>
+
+                        <span>神经外科5</span>
+
+                        <span>神经外科6</span>
+
+                        <span>神经外科7</span>
+
+                        <span>神经外科8</span>
+
+                        <span>神经外科9</span>
+
+                    </div>
+
+                </div>
+
+                <div class="block">
+
+                    <div class="title">神经外科</div>
+
+                    <div class="content">
+
+                        <span>神经外科0</span>
+
+                        <span>神经外科1</span>
+
+                        <span>神经外科2</span>
+
+                        <span>神经外科3</span>
+
+                        <span>神经外科4</span>
+
+                        <span>神经外科5</span>
+
+                        <span>神经外科6</span>
+
+                        <span>神经外科7</span>
+
+                        <span>神经外科8</span>
+
+                        <span>神经外科9</span>
+
+                    </div>
+
+                </div>
+
+                <div class="block">
+
+                    <div class="title">神经外科</div>
+
+                    <div class="content">
+
+                        <span>神经外科0</span>
+
+                        <span>神经外科1</span>
+
+                        <span>神经外科2</span>
+
+                        <span>神经外科3</span>
+
+                        <span>神经外科4</span>
+
+                        <span>神经外科5</span>
+
+                        <span>神经外科6</span>
+
+                        <span>神经外科7</span>
+
+                        <span>神经外科8</span>
+
+                        <span>神经外科9</span>
+
+                    </div>
+
+                </div>
+
+                <div class="block">
+
+                    <div class="title">神经外科</div>
+
+                    <div class="content">
+
+                        <span>神经外科0</span>
+
+                        <span>神经外科1</span>
+
+                        <span>神经外科2</span>
+
+                        <span>神经外科3</span>
+
+                        <span>神经外科4</span>
+
+                        <span>神经外科5</span>
+
+                        <span>神经外科6</span>
+
+                        <span>神经外科7</span>
+
+                        <span>神经外科8</span>
+
+                        <span>神经外科9</span>
+
+                    </div>
+
+                </div>
+
+                <div class="block">
+
+                    <div class="title">神经外科</div>
+
+                    <div class="content">
+
+                        <span>神经外科0</span>
+
+                        <span>神经外科1</span>
+
+                        <span>神经外科2</span>
+
+                        <span>神经外科3</span>
+
+                        <span>神经外科4</span>
+
+                        <span>神经外科5</span>
+
+                        <span>神经外科6</span>
+
+                        <span>神经外科7</span>
+
+                        <span>神经外科8</span>
+
+                        <span>神经外科9</span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+
+
+    <div id="footer" class="footer clearfix">
+
+        Copyright &copy; 2019 imooc版权所有
+
+    </div>
+
+    <script type="text/javascript" src="/hospital/js/jquery-1.7.1.min.js"></script>
+
+    <script>
+
+        //ui-search定义
+
+        $.fn.UISearch = function () {
+
+            var ui = $(this);
+
+            $('.ui-search-selected', ui).on('click', function () {
+
+                $('.ui-search-select-list').show();
+
+                return false;
+
+            });
+
+            $('.ui-search-select-list a', ui).on('click', function () {
+
+                $('.ui-search-selected').text($(this).text());
+
+                $('.ui-search-select-list').hide();
+
+                return false;
+
+            });
+
+            $('body').on('click', function () {
+
+                $('.ui-search-select-list').hide();
+
+            })
+
+        }
+
+
+
+        //展示更多
+
+        $.fn.UIMore = function () {
+
+            var more = false;
+
+            $('.more-btn').on('click', function () {
+
+                if (more == false) {
+
+                    $('.more').css('display', 'inline-block');
+
+                    $('.hot .content').css('height', '246px');
+
+                    $('.more-btn').text('收起');
+
+                    $('.more-btn').css('top', '193px');
+
+                    more = true;
+
+                } else {
+
+                    $('.more').css('display', 'none');
+
+                    $('.hot .content').css('height', '109px');
+
+                    $('.more-btn').text('展开全部');
+
+                    $('.more-btn').css('top', '62px');
+
+                    more = false;
+
+                }
+
+                return false;
+
+            });
+
+        }
+
+
+
+        //页面的脚本逻辑
+
+        $(function () {
+
+            $('.ui-search').UISearch();
+
+            $('.more-btn').UIMore();
+
+        })
+
+    </script>
+
+</body>
+
+</html>

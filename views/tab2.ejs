@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            list-style: none;
+        }
+
+        #warp {
+            width: 800px;
+            border: 1px solid #000000;
+            margin: 20px auto;
+            background: blue;
+            height: 362px;
+        }
+
+        #left_list {
+            float: left
+        }
+
+        #left_list li {
+            width: 200px;
+            height: 89px;
+            background: red;
+            margin-bottom: 2px;
+            color: #fff;
+            font: 50px/89px "黑体";
+            text-align: center;
+        }
+
+        #left_list .active {
+            background: yellow;
+            color: #000;
+        }
+
+        #right {
+            float: left
+        }
+
+        #right a {
+            display: block;
+            width: 600px;
+            height: 322px;
+            text-align: center;
+            color: #000;
+            font: 100px/322px "Microsoft YaHei";
+            text-decoration: none;
+            background: #0F0;
+        }
+
+        #right li {
+            height: 40px;
+            float: left;
+            width: 148px;
+            background: #909;
+            text-align: center;
+            font: 20px/40px "Microsoft YaHei";
+            margin-right: 2px;
+            color: #fff;
+        }
+
+        #right .active {
+            background: #fff;
+            color: #000;
+        }
+
+        #right div {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="warp">
+        <ul id="left_list">
+            <li class="active">a</li>
+            <li>b</li>
+            <li>c</li>
+            <li>d</li>
+        </ul>
+        <div id="right">
+            <div class="right_box" style="display: block">
+                <a href="#">a1</a>
+                <ul>
+                    <li class="active">a1</li>
+                    <li>a2</li>
+                    <li>a3</li>
+                    <li>a4</li>
+                </ul>
+            </div>
+            <div class="right_box">
+                <a href="#">b1</a>
+                <ul>
+                    <li class="active">b1</li>
+                    <li>b2</li>
+                    <li>b3</li>
+                    <li>b4</li>
+                </ul>
+            </div>
+            <div class="right_box">
+                <a href="#">c1</a>
+                <ul>
+                    <li class="active">c1</li>
+                    <li>c2</li>
+                    <li>c3</li>
+                    <li>c4</li>
+                </ul>
+            </div>
+            <div class="right_box">
+                <a href="#">d1</a>
+                <ul>
+                    <li class="active">d1</li>
+                    <li>d2</li>
+                    <li>d3</li>
+                    <li>d4</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+<script>
+	var leftList=document.getElementById("left_list"),leftListLi=leftList.getElementsByTagName("li"),
+		right=document.getElementById("right"),rightBox=right.getElementsByClassName("right_box");
+	for(var a=0;a<leftListLi.length;a++){
+		leftListLi[a].index=a;
+		leftListLi[a].onmouseover=function(){
+			for(var b=0;b<leftListLi.length;b++){
+				leftListLi[b].className = "";
+			}
+			for(var d=0;d<rightBox.length;d++){
+				rightBox[d].style.display="none";
+			}
+			this.className="active";
+			var c=this.index;
+			rightBox[c].style.display="block";
+			var rightBoxLi=rightBox[c].getElementsByTagName("li"),rightBoxA=rightBox[c].getElementsByTagName("a");
+			for(var x=0;x<rightBoxLi.length;x++){
+				rightBoxLi[x].onmouseover=function(){
+					for(var y=0;y<rightBoxLi.length;y++){
+						rightBoxLi[y].className="";
+					}
+					this.className="active";
+					rightBoxA[0].innerHTML=this.innerHTML;
+				}
+			}
+		}
+	}
+	
+</script>
+</body>
+
+</html>

@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        @keyframes dispers{
+            0%{
+               transform: rotate3d(1,1,0,0deg);
+            }
+            100%{
+                transform: rotate3d(1,1,0,360deg);
+            }
+        }
+
+        body{
+            perspective: 2000px; 
+        }
+        .box{
+            transform-style: preserve-3d;
+            position: relative;
+           width: 200px;
+           height: 200px;
+            margin: 400px auto;
+            transform-origin: top center; 
+            animation: dispers 2s infinite linear;
+            /*transform: rotateY(20deg)*/;
+        }
+    /* img{
+        width: 500px;
+        height: 500px;  
+    } */
+    .box div{
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 200px;
+        height: 200px;
+        border: 2px solid black;
+        font-size: 50px;
+        line-height: 200px;
+        text-align: center;
+    }
+    .box div{
+        transition: transform 1s;
+    }
+    .box:hover .top{
+        transform:rotateX(90deg) translateZ(150px);
+    }
+    .box:hover .bottom{
+        transform:rotateX(-90deg) translateZ(150px);
+    }
+    .box:hover .left{
+        transform:rotatey(-90deg) translateZ(150px);
+    }
+    .box:hover .right{
+        transform:rotatey(90deg) translateZ(150px);
+    }
+    .box:hover .front{
+        transform:translateZ(150px);
+    }
+    .box:hover .back{
+        transform:rotatex(180deg) translateZ(150px);
+    }
+    .top{
+        transform: rotateX(90deg) translateZ(100px);
+       
+    }
+    .bottom{
+        transform: rotateX(-90deg) translateZ(100px);
+      
+    }
+    .left{
+        transform: rotatey(-90deg) translateZ(100px);
+       
+    }
+    .right{
+        transform: rotatey(90deg) translateZ(100px);
+        
+    }
+    .front{
+        transform: translateZ(100px);
+    }
+    .back{
+        transform: rotatex(180deg) translateZ(100px);
+    }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <div class="top">
+            top
+        </div>
+        <div class="bottom">
+           bottom
+        </div>
+        <div class="left">
+            left
+        </div>
+        <div class="right">
+           right 
+        </div>
+        <div class="front">
+            front
+        </div>
+        <div class="back">
+           back
+        </div>
+    </div>
+</body>
+</html>

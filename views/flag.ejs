@@ -1,0 +1,78 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+<title>the Five-Starred Red Flag</title>
+<style>
+      .flag {
+        width: 600px;
+        height: 400px;
+        background: red;
+        margin: 300px auto;
+        position: relative;
+      }
+      .stars {
+        width: 0;
+        height: 0;
+        border-left: 65px solid transparent;
+        border-right: 65px solid transparent;
+        border-top: 40px solid yellow;
+        position: absolute;
+        top: 80px;
+        left: 40px;
+      }
+      .stars::before,
+      .stars::after {
+        display: block;
+        content: "";
+        width: 0;
+        height: 0;
+        border-left: 65px solid transparent;
+        border-right: 65px solid transparent;
+        border-top: 40px solid yellow;
+        position: absolute;
+      }
+      .stars::before {
+        left: -65px;
+        top: -40px;
+        transform: rotate(-70deg);
+      }
+      .stars::after {
+        left: -65px;
+        top: -40px;
+        transform: rotate(-146deg);
+      }
+      .star-2 {
+        transform: scale(0.3) rotate(20deg);
+        left: 150px;
+        top: 20px;
+      }
+      .star-3 {
+        transform: scale(0.3) rotate(40deg);
+        left: 180px;
+        top: 70px;
+      }
+      .star-4 {
+        transform: scale(0.3) rotate(60deg);
+        left: 180px;
+        top: 120px;
+      }
+      .star-5 {
+        transform: scale(0.3) rotate(80deg);
+        left: 150px;
+        top: 170px;
+      }
+    </style>
+</head>
+<body>
+<div class="flag">
+<div class="star-1 stars"></div>
+<div class="star-2 stars"></div>
+<div class="star-3 stars"></div>
+<div class="star-4 stars"></div>
+<div class="star-5 stars"></div>
+</div>
+</body>
+</html>

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>title</title>
+</script>
+  <style>
+    *{
+      margin: 0;
+      padding: 0;
+    }
+    body{
+      height: 2000px;
+    }
+    img{
+      position: absolute;
+    }
+    #box{
+      position: absolute;
+	  left:10px;
+	  top:10px;
+      width: 100px;
+      height: 100px;
+      border: 1px solid red;
+    }
+    #img{
+      position: absolute;
+      width: 100px;
+      height: 100px;
+      border: 1px solid green;
+    }
+  </style>
+</head>
+<body>
+
+<div id="box"></div>
+<div id="img"></div>
+<script>
+  //图片跟着鼠标飞,可以中任何的浏览器中实现
+  //clientX 和 clientY 单独的使用的兼容代码
+  //scrollLeft 和 scroollTop 的兼容代码
+  //pageX, pageY 和 clientX + scrollLeft 和 clientY + scrollTop
+  
+  //把代码封装在对象中
+  
+  var evt = {
+      //window.event 和 事件参数对象e的兼容
+      getEvent:function(evt){
+          return window.event || e;
+      },
+      //可视区域的横坐标的兼容代码
+      getClientX:function(evt){
+          return this.getEvent(evt).clientX;
+      },
+      //可视区域的纵坐标的兼容代码
+      getClientY:function(evt){
+          return this.getEvent(evt).clientY;
+      },
+      //页面向左卷曲出去的横坐标
+      getScrollLeft:function(){
+          return window.pageXOffset || document.body.scrollLeft 
+          || document.documentElement.scrollLeft || 0;
+      },
+      //页面向上卷曲出去的纵坐标
+      getScrollTop:function(){
+          return window.pageYOffset || document.body.scrollTop 
+          || document.documentElement.scrollTop || 0;
+      },
+      //相对于页面的横坐标(pageX 或者 clientX+scrollLeft)
+      getPageX:function(evt){
+          return this.getEvent(evt).pageX ? this.getEvent(evt).pageX : this.getClientX(evt) + this.getScrollLeft();
+      },
+      //相对于页面的纵坐标(pageX 或者 clientY + scrollTop)
+      getPageY:function(evt){
+          return this.getEvent(evt).pageY ? this.getEvent(evt).pageY : this.getClientY(evt) + this.getScrollTop();
+      }
+  }
+  document.onmousemove=function (e) {
+    document.getElementById("box").style.left=evt.getPageX(e)+"px";
+    document.getElementById("box").style.top=evt.getPageY(e)+"px";
+  }
+</script>
+</body>
+</html>
+    

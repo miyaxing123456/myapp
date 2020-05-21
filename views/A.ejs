@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Document</title>
+    <style>
+        .box{
+            position: relative;
+            width: 600px;
+            height: 750px;
+            
+        }
+        .zuoshou{
+            position: absolute;
+            width: 70px;
+            height: 300px;
+            left: 150px;
+            top: 210px;
+            transform: rotate(50deg);
+            background-color: dodgerblue;
+            border: 2px solid black;
+            box-shadow: 5px 0px 10px rgba(0, 0, 0, 0.6);
+        }
+        .youshou{
+            position: absolute;
+            width: 70px;
+            height: 300px;
+            right: 150px;
+            top: 210px;
+            transform: rotate(-50deg);
+            background-color: dodgerblue;
+            border: 2px solid black;
+            box-shadow: -5px 0px 10px rgba(0, 0, 0, 0.6);
+        }
+        .head{
+            position: absolute;
+            width: 400px;
+            height: 400px;
+            left: 98px;
+            top: 18px;
+            border: 2px solid black;
+            border-radius: 200px;
+            background-color: dodgerblue;
+            box-shadow: -10px 0px 20px rgba(0, 0, 0, 0.4);
+            background-image: -webkit-radial-gradient( 377px 78px, 100px 100px,white ,dodgerblue);
+        }
+       
+        .shenti{
+            position: absolute;
+            width: 276px;
+            height: 240px;
+            left: 162px;
+            bottom: 140px;
+            border: 2px solid black;
+            border-top: 0;
+            border-left: 0;
+            border-right: 0;
+            background-color: dodgerblue;
+        }
+        .face{
+            position: absolute;
+            width: 330px;
+            height: 280px;
+            left: 135px;
+            top: 100px;
+            border-radius: 50%;
+            background-color: white;
+            background-image: -webkit-radial-gradient( 0 250px, 150px 120px,rgba(0,0,0,0.3)0% ,white 100%);
+        }
+        .duzi{
+            position: absolute;
+            width: 230px;
+            height: 230px;
+            left: 183px;
+            top: 340px;
+            border-radius: 50%;
+            background-color: white;
+            border: 2px solid black;
+            box-shadow: -7px 20px 20px rgba(0, 0, 0, 0.2);
+        }
+        
+        .banyuan{
+            position: absolute;
+            width: 36px;
+            height: 30px;
+            left: 282px;
+            bottom: 130px;
+            border: 2px solid black;
+            border-bottom: 0;
+            background-color:  white;
+            border-radius: 20px 20px 0 0;
+            box-shadow: -1px 1px 12px rgba(0, 0, 0, 0.8) inset;
+        }
+        .zuohand{
+            position: absolute;
+            width: 90px;
+            height: 90px;
+            left: 20px;
+            top: 410px;
+            border-radius: 50%;
+            border: 2px solid black;
+            background-color: white;
+            background-image: -webkit-radial-gradient( 0px 90px, 60px 60px,rgba(0,0,0,0.2)0% ,white 100%);
+        }
+        .youhand{
+            position: absolute;
+            width: 90px;
+            height: 90px;
+            right: 20px;
+            top: 410px;
+            border-radius: 50%;
+            border: 2px solid black;
+            background-color: white;
+            background-image: -webkit-radial-gradient( -20px 90px, 90px 60px,rgba(0,0,0,0.2)0% ,white 100%);
+        }
+        .zuoxian{
+            position: absolute;
+            width: 2px;
+            height: 205px;
+            left: 160px;
+            top: 405px;
+            background-color: black;
+        }
+        .youxian{
+            position: absolute;
+            width: 2px;
+            height: 205px;
+            right: 160px;
+            top: 405px;
+            background-color: black;
+        }
+        .zuofoot{
+            position: absolute;
+            width: 150px;
+            height: 34px;
+            left: 135px;
+            bottom: 110px;
+            border-radius: 26px 17px 17px 14px;
+            background-color: white;
+            border: 2px solid black;
+            box-shadow: -9px 1px 10px rgba(0, 0, 0, 0.4) ;
+            background-image: -webkit-radial-gradient( 7px 17px, 30px 30px,rgba(0,0,0,0.3)0% ,white 100%);
+        }
+        .youfoot{
+            position: absolute;
+            width: 150px;
+            height: 34px;
+            right: 133px;
+            bottom: 110px;
+            border-radius: 17px 26px 14px 17px;
+            background-color: white;
+            border: 2px solid black;
+            box-shadow: -9px 1px 10px rgba(0, 0, 0, 0.4) ;
+            background-image: -webkit-radial-gradient( 7px 17px, 30px 30px,rgba(0,0,0,0.3)0% ,white 100%);
+        }
+        .hongxian{
+            position: absolute;
+            width: 320px;
+            height: 30px;
+            left: 138px;
+            top: 340px;
+            border-radius: 15px;
+            background-color: rgb(204, 25, 25);
+            border: 2px solid black;
+        }
+        .baibaodai{
+            position: absolute;
+            width: 170px;
+            height: 85px;
+            left: 213px;
+            top: 458px;
+            border-radius: 0 0 85px 85px ;
+            background-color: white;
+            border: 2px solid black;
+            background-image: -webkit-radial-gradient( 0 86px, 94px 55px,rgba(0,0,0,0.3)0%,white 100%);
+        }
+        .xiamouse{
+            position: absolute;
+            width: 240px;
+            height: 120px;
+            left: 178px;
+            top: 200px;
+            background-color: black;
+            border-radius: 0 0 120px 120px;
+        }
+        .shangmouse{
+            position: absolute;
+            width: 244px;
+            height: 122px;
+            left: 176px;
+            top: 195px;
+            background-color: white;
+            border-radius: 0 0 120px 120px;
+        }
+        .biliang{
+            position: absolute;
+            width: 4px;
+            height: 125px;
+            left: 298px;
+            top: 193px;
+            background-color: black;
+        }
+        .nouse{
+            position: absolute;
+            width: 40px;
+            height: 40px;
+            border: 2px solid black;
+            left: 278px;
+            top: 153px;
+            border-radius: 50%;
+            background-color: white;
+            background-image: -webkit-radial-gradient( 30px 18px, 40px 40px,white 0%,rgb(204, 25, 25) 35%);
+        }
+        .eye1{
+            position: absolute;
+            width: 90px;
+            height: 100px;
+            border-radius: 45px;
+            left: 206px;
+            top: 68px;
+            border: 3px solid black;
+            background-color: white;
+        }
+        .eye2{
+            position: absolute;
+            width: 90px;
+            height: 100px;
+            border-radius: 45px;
+            right: 206px;
+            top: 68px;
+            border: 3px solid black;
+            background-color: white;
+        }
+        .xian1{
+            position: absolute;
+            width: 70px;
+            height: 2px;
+            left: 160px;
+            top: 220px;
+            background-color: black;
+        }
+        .xian2{
+            position: absolute;
+            width: 70px;
+            height: 2px;
+            left: 163px;
+            top: 243px;
+            transform: rotate(-18deg);
+            background-color: black;
+        }
+        .xian3{
+            position: absolute;
+            width: 70px;
+            height: 2px;
+            left: 163px;
+            top: 197px;
+            transform: rotate(18deg);
+            background-color: black;
+        }
+        .xian4{
+            position: absolute;
+            width: 70px;
+            height: 2px;
+            right: 160px;
+            top: 220px;
+            background-color: black;
+        }
+        .xian5{
+            position: absolute;
+            width: 70px;
+            height: 2px;
+            right: 163px;
+            top: 243px;
+            transform: rotate(-162deg);
+            background-color: black;
+        }
+        .xian6{
+            position: absolute;
+            width: 70px;
+            height: 2px;
+            right: 163px;
+            top: 197px;
+            transform: rotate(162deg);
+            background-color: black;
+        }
+        .lingdang{
+            position: absolute;
+            width: 50px;
+            height: 50px;
+            left: 272px;
+            top: 360px;
+            border-radius: 50%;
+            border: 3px solid black;
+            background-color: white;
+            background-image: -webkit-radial-gradient( 40px 15px, 55px 55px,white 0%,rgb(221, 221, 21) 55%);
+            box-shadow: -10px 3px 15px rgba(0, 0, 0, 0.4);
+        }
+        .heiqiu1{
+            position: absolute;
+            width: 15px;
+            height: 15px;
+            left: 0px;
+            top: -260px;
+            border-radius: 50%;
+            background-color: black;
+            transition: transform 0.15s;
+        }
+        .heiqiu2{
+            position: absolute;
+            width: 15px;
+            height: 15px;
+            right: 0px;
+            top: -260px;
+            border-radius: 50%;
+            background-color: black;
+            transition: transform 0.15s;
+        }
+        .lingdang:hover .heiqiu1{
+           transform: translateY(-24px);
+        }
+        .lingdang:hover .heiqiu2{
+           transform: translateY(-24px);
+        }
+        .heng1{
+            position: absolute;
+            width: 40px;
+            height: 2px;
+            left:5px;
+            top: 6px;
+            background-color: black;
+        }
+        .heng2{
+            position: absolute;
+            width: 48px;
+            height: 2px;
+            left: 2px;
+            top: 14px;
+            background-color: black;
+        }
+        .shu{
+            position: absolute;
+            width: 6px;
+            height: 15px;
+            left: 22px;
+            top: 36px;
+            background-color: black;
+        }
+        .lingdangzhongxin{
+            position: absolute;
+            width: 14px;
+            height: 12px;
+            left: 18px;
+            top: 26px;
+            border-radius: 6px;
+            background-color: black;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <div class="zuoshou"></div>
+        <div class="youshou"></div>
+        <div class="head"></div>
+        <div class="shenti"></div>
+        <div class="face"></div>
+        <div class="duzi"></div>
+        <div class="banyuan"></div>
+        <div class="zuohand"></div>
+        <div class="youhand"></div>
+        <div class="zuoxian"></div>
+        <div class="youxian"></div>
+        <div class="zuofoot"></div>
+        <div class="youfoot"></div>
+        <div class="hongxian"></div>
+        <div class="baibaodai"></div>
+        <div class="xiamouse"></div>
+        <div class="shangmouse"></div>
+        <div class="biliang"></div>
+        <div class="nouse"></div>
+        <div class="eye1"></div>
+        <div class="eye2"></div>
+        <div class="xian1"></div>
+        <div class="xian2"></div>
+        <div class="xian3"></div>
+        <div class="xian4"></div>
+        <div class="xian5"></div>
+        <div class="xian6"></div>
+        <div class="lingdang">
+            <div class="heiqiu1"></div>
+            <div class="heiqiu2"></div>
+            <div class="heng1"></div>
+            <div class="heng2"></div>
+            <div class="shu"></div>
+            <div class="lingdangzhongxin"></div>
+        </div>
+       
+    </div>
+</body>
+</html>

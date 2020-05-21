@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+            -webkit-user-select: none;
+        }
+
+        ul{
+            width: 1000px;
+            height: 600px;
+            margin: 50px auto;
+        }
+
+        ul li{
+            float: left;
+            width: 300px;
+            height: 600px;
+            list-style: none;
+            margin-right: 30px;
+        }
+
+        ul li img{
+            width: 300px;
+            height: 550px;
+            border: none;
+            display: block;
+        }
+
+        ul li p{
+            height: 50px;
+            line-height: 50px;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <ul>
+        <li>
+            <img src="img/1.jpg">
+            <p>点我啊:0</p>
+        </li>
+        <li>
+            <img src="img/2.jpg">
+            <p>点我啊:0</p>
+        </li>
+        <li>
+            <img src="img/3.jpg">
+            <p>点我啊:0</p>
+        </li>
+    </ul>
+    <script>
+        //获取要操作的元素
+        var oPs = document.getElementsByTagName("p");
+        for(var i = 0;i<oPs.length;i++){
+            //每次循环让zan这个函数执行，将这个函数的返回值赋值给这个事件  并且每次点击让它的的返回值执行
+            oPs[i].onclick = zan();
+			console.log(oPs[i].onclick);
+        }
+        
+        function zan(){
+            console.log(this);
+            var num = 0;
+            return function (){
+                console.log(this);
+                num++;
+                this.innerHTML = "赞:"+num;
+            }
+        }
+    </script>
+</body>
+
+</html>

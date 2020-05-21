@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            list-style: none
+        }
+
+        #list {
+            width: 1000px;
+            height: 40px;
+            background: #01204f;
+            margin: 50px auto;
+            position: relative;
+        }
+
+        #list li {
+            float: left;
+            color: #fff;
+            font: 700 14px/40px "Microsoft YaHei";
+            padding: 0 10px;
+            cursor: pointer;
+            position: relative;
+        }
+
+        #list .home {
+            background: #c00;
+        }
+
+        #list div {
+            position: absolute;
+            width: 40px;
+            height: 40px;
+            background: #c00;
+        }
+    </style>
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script>
+        $(function () {
+            //绑定事件
+            //鼠标移入   
+            $("#list li").mouseenter(function () {
+                //当鼠标移入那个li  就让div跑到那个li下 
+                //确定当前这个li的left的值  和 当前这个li的宽度 
+                var left = $(this).position().left;
+                var width = $(this).outerWidth();
+
+                //设置给div   其实就是设置目标值  要有一个过渡（动画）
+                $("#list div").stop().animate({
+                    left: left,
+                    width: width
+                }, 200);
+            }).mouseleave(function () {
+                //当鼠标离开恢复初始的状态   left  width
+                var left = $(".home").position().left;
+                $("#list div").stop().animate({
+                    left: left,
+                    width: 40
+                }, 200);
+            });
+
+
+            //点击有激活样式   点击谁谁就有home类名
+            $("#list li").click(function(){
+                $(this).addClass("home").siblings("li").removeClass("home");
+            });
+
+
+
+        });
+    </script>
+</head>
+
+<body>
+    <ul id="list">
+        <div></div>
+        <li class="home">首页</li>
+        <li>新闻</li>
+        <li>社会新闻</li>
+        <li>汽车</li>
+        <li>家居</li>
+        <li>社会新闻</li>
+        <li>汽车</li>
+        <li>家居</li>
+        <li>社会新闻</li>
+        <li>汽车</li>
+        <li>家居</li>
+        <li>社会新闻</li>
+    </ul>
+</body>
+
+</html>

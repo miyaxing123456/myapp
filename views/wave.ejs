@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>波浪音阶</title>
+	<style>
+		.box{width:500px;height:100px;margin:0 auto;}
+		.item{width:10px;height:100px;margin:0 10px;border-radius:5px;background-color:#000000;float:left;}
+		.first{animation:wave 2s linear infinite alternate;}
+		.one{animation:wave 2s linear infinite alternate 0.4s;}
+		.two{animation:wave 2s linear infinite alternate 0.6s;}
+		.three{animation:wave 2s linear infinite alternate 0.8s;}
+		.four{animation:wave 2s linear infinite alternate 1.2s;}
+		.five{animation:wave 2s linear infinite alternate 1.4s;}
+		.six{animation:wave 2s linear infinite alternate 1.8s;}
+		.seven{animation:wave 2s linear infinite alternate 2s;}
+		@keyframes wave{0%   
+		{background-color:#000000;transform:scale(1,1);}25%  
+		{background-color:#606060;transform:scale(1,0.8);}50%  
+		{background-color:#A8A8A8;transform:scale(1,0.5);}100% 
+		{background-color:#A8A8A8;transform:scale(1,0.2);}}
+		.box2{width:500px;height:200px;margin:200px auto;background-color:#660066;position:relative;}
+		.line{width:20px;height:150px;margin:0 5px;border-radius:10px;position:absolute;float:left;}
+		.middle{background-color:#330099;top:20px;left:120px;}
+		.middle1{background-color:#66cc66;top:18px;left:90px;}
+		.middle2{background-color:#ffcc00;top:16px;left:60px;}
+		.middle3{background-color:#cc6633;top:19px;left:30px;}
+		.middle4{background-color:#cc0066;top:24px;left:0;}
+		.right1{left:150px;}
+		.right2{left:180px;}
+		.right3{left:210px;}
+		.right4{left:240px;}
+
+	</style>
+</head>
+<body>
+	<div class="box">
+		<div class="item seven"></div>
+		<div class="item six"></div>
+		<div class="item five"></div>
+		<div class="item four"></div>
+		<div class="item three"></div>
+		<div class="item two"></div>
+		<div class="item one"></div>
+		<div class="item first"></div>
+		<div class="item one"></div>
+		<div class="item two"></div>
+		<div class="item three"></div>
+		<div class="item four"></div>
+		<div class="item five"></div>
+		<div class="item six"></div>
+		<div class="item seven"></div>
+	</div>
+	<div class="box2">
+		<div class="line middle4"></div>
+		<div class="line middle3"></div>
+		<div class="line middle2"></div>
+		<div class="line middle1"></div>
+		<div class="line middle"></div>
+		<div class="line middle1 right1"></div>
+		<div class="line middle2 right2"></div>
+		<div class="line middle3 right3"></div>
+		<div class="line middle4 right4"></div>
+	</div>
+</body>
+</html>

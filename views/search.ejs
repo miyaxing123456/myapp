@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <input type="text" />
+    <ul id="content"></ul>
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script>
+        //https://www.baidu.com/sugrec?prod=pc&wd=关键字
+        $("input[type=text]").on("keyup", function () {
+            //获取数据
+            $.ajax({
+                url: "https://www.baidu.com/sugrec",
+                data: {
+                    prod: "pc",
+                    wd: $(this).val()
+                },
+                dataType: "jsonp",
+                success: function (data) {
+                    var curArray = data.g;
+                    //字符串的拼接
+                    var str = '';
+                    //迭代当前数组
+                    $(curArray).each(function (index, val) {
+                        str += '<li><a href="https://www.baidu.com/s?wd='+val.q+'">'+val.q+'</a></li>';
+                    });
+                    //将原来的内容清空
+                    $("#content").html("");
+                    //将拼接好的字符串添加到内容中
+                    $("#content").append(str);
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>

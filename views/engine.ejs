@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .box{
+            width: 700px;
+            height: 500px;
+            background-color: lightsalmon;
+        }
+        .item{
+            position: relative;
+            float: left;
+            width: 100px;
+            height: 300px;
+            background-color:palevioletred;
+            border-radius: 8px 8px 50px 50px;
+            margin: 100px 20px;
+
+        }
+        .inner01{
+            position: relative;
+            /* margin-top: 50px; */
+            
+        }
+        .inner01-1{
+            animation: move .5s linear infinite alternate;
+        }
+        .inner01-2{
+            animation: move .5s 0.1s linear infinite alternate;
+        }
+        .inner01-3{
+            animation: move .5s 0.2s linear infinite alternate;
+        }
+        .inner01-4{
+            animation: move .5s 0.3s linear infinite alternate;
+        }
+        .inner01-5{
+            animation: move .5s 0.4s linear infinite alternate;
+        }
+        .top{
+            width: 100px;
+            height: 70px;
+            background-color: #666;
+            border-radius: 8px;
+        }
+        .bottom{
+            position: absolute;
+            left: 40px;
+            top: 70px;
+            width: 20px;
+            height: 150px;
+            background-color: #666;
+            border-radius: 0 0 10px 10px;
+            /* margin-left: 40px; */
+            z-index: 2;
+            /* transform: rotate(20deg); */
+            transform-origin: center top;
+
+            /* animation: myRotate 2s linear infinite; */
+            
+        }
+        .bottom01{
+            animation: myRotate 1s linear infinite;
+        }
+        .bottom02{
+            animation: myRotate 1s 0.1s linear infinite;
+        }
+        .bottom03{
+            animation: myRotate 1s 0.2s linear infinite;
+        }
+        .bottom04{
+            animation: myRotate 1s 0.3s linear infinite;
+        }
+        .bottom05{
+            animation: myRotate 1s 0.4s  linear infinite;
+        }
+        .inner02{
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 60px;
+            height: 60px;
+            border: 20px solid lightcoral;
+            border-radius: 50%;
+        }
+
+        @keyframes move {
+            0%{
+                margin-top: 0px;
+            }
+            100%{
+                margin-top: 80px;
+            }
+        }
+
+
+        @keyframes myRotate{
+            0%{
+                transform:rotate(0deg)
+            }
+            25%{
+                transform:rotate(-16deg) 
+            }
+            50%{
+                transform:rotate(0deg) 
+            }
+            75%{
+                transform:rotate(16deg) 
+            }
+            100%{
+                transform:rotate(0deg) 
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <div class="item">
+            <div class="inner01 inner01-1">
+                <div class="top"></div>
+                <div class="bottom bottom01"></div>
+            </div>
+            <div class="inner02"></div>
+        </div>
+        <div class="item">
+            <div class="inner01 inner01-2">
+                <div class="top"></div>
+                <div class="bottom bottom02"></div>
+            </div>
+            <div class="inner02"></div>
+        </div>
+        <div class="item">
+            <div class="inner01 inner01-3">
+                <div class="top"></div>
+                <div class="bottom bottom03"></div>
+            </div>
+            <div class="inner02"></div>
+        </div>
+        <div class="item">
+            <div class="inner01 inner01-4">
+                <div class="top"></div>
+                <div class="bottom bottom04"></div>
+            </div>
+            <div class="inner02"></div>
+        </div>
+        <div class="item">
+            <div class="inner01 inner01-5">
+                <div class="top"></div>
+                <div class="bottom bottom05"></div>
+            </div>
+            <div class="inner02"></div>
+        </div>
+
+    </div>
+</body>
+</html>

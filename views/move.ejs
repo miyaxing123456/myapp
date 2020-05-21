@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+		*{margin:0;padding:0;}
+        #outer{
+            position: relative;  /* 父元素相对定位 */
+            width: 800px;
+            height: 600px;
+            border: 2px solid black;
+        }
+        #box{
+            position: absolute;  /* 子元素绝对定位 */
+            left: 0px;
+            top: 0px;
+            width: 100px;
+            height: 100px;
+            background-color: red;
+        }
+    
+    </style>
+</head>
+<body>
+    <div id="outer">
+        <div id="box"></div>
+    </div>
+
+    <script>
+		
+    
+        var oBox = document.getElementById('box');
+        var t  = 0;
+        var le = 0;
+		console.log(oBox.style);
+		console.log(oBox.style);
+		
+        document.onkeydown = function(event){
+			var left=oBox.style.left,top=oBox.style.top;
+			console.log(left);
+			console.log(top);
+           
+            if(event.keyCode == 38){
+				if(t<=0){t=0;}
+                else{t -= 10;
+                }
+				oBox.style.top = t + "px";
+            }
+
+            if(event.keyCode == 40){
+				if(t>=500){t=500;}
+                else{t += 10;
+                }
+				oBox.style.top = t + "px";
+            }
+
+            if(event.keyCode == 37){
+				if(le<=0){le=0;}
+                else{le -= 10;}
+                oBox.style.left = le + "px";
+            }
+            if(event.keyCode == 39){
+				if(le>=700){le=700;}
+                else{le += 10;}
+                oBox.style.left = le + "px";
+            }
+        }
+    
+    </script>
+</body>
+</html>

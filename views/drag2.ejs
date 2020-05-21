@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        #box {
+            width: 300px;
+            height: 300px;
+            background-color: red;
+            position: absolute;
+            cursor: move;
+        }
+
+        #box img {
+            width: 300px;
+            height: 300px;
+        }
+
+        #btn {
+            display: block;
+            width: 50px;
+            height: 30px;
+            line-height: 30px;
+            position: fixed;
+            right: 100px;
+            bottom: 100px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="box">我是DIV</div>
+    <!-- <div id="box"><img src="img/1.jpg" /></div> -->
+    <button id="btn">点我啊</button>
+    <script>
+        // 当拖拽的内容中有图片或文字的时候存在默认行为(图片有跳转行为)  将图片或文字拖拽出来
+        //标准浏览器下  return false
+        //IE6~8:  
+            //在鼠标按下的时候将事件和元素锁定  :元素对象.setCapture()
+            //在鼠标抬起的的时候用解锁 :元素对象.releaseCapture();   
+
+        //获取要操作的元素
+        var box = document.getElementById("box");
+        var btn = document.getElementById("btn");
+
+        //拖拽的状态
+        //鼠标按下   onmousedown   鼠标  onmousemove   鼠标抬起：onmouseup
+
+        var arr = []; //存储当前盒子所有的坐标
+        //鼠标按下的时候
+        box.onmousedown = function (ev) {
+            //事件对象的兼容处理
+            ev = ev || window.event;
+            // 将元素和事件锁定
+            if(box.setCapture){
+                box.setCapture();
+            }
+
+            //确定鼠标距离盒子的距离（x,y）
+            var x = ev.clientX - box.offsetLeft;
+            var y = ev.clientY - box.offsetTop;
+
+
+            //因为鼠标按下不能抬起  紧接着就是移动
+            //鼠标移动过快移出div   但是不能移动出document
+            document.onmousemove = function (ev) {
+                //事件对象的兼容处理
+                ev = ev || window.event;
+                //确定当前盒子的位置 也就是left和top值
+                var left = ev.clientX - x;
+                var top = ev.clientY - y;
+
+                //边界值设置
+                var minLeft = 0,
+                    maxLeft = (document.documentElement.clientWidth || document.body.clientWidth) - box
+                    .offsetWidth;
+                var minTop = 0,
+                    maxTop = (document.documentElement.clientHeight || document.body.clientHeight) - box
+                    .offsetHeight;
+
+
+                //边界值判断
+                if (left <= minLeft) {
+                    left = minLeft;
+                } else if (left >= maxLeft) {
+                    left = maxLeft;
+                }
+
+                if (top <= minTop) {
+                    top = minTop;
+                } else if (top >= maxTop) {
+                    top = maxTop;
+                }
+
+
+                //将移动过程中left和top值存储到我们数组当中
+                var obj = {
+                    x: left,
+                    y: top
+                };
+                arr.push(obj);
+
+                //设置
+                box.style.left = left + 'px';
+                box.style.top = top + 'px';
+            }
+
+            //鼠标抬起
+            document.onmouseup = function () {
+                // 鼠标抬起解除锁定
+                if(box.releaseCapture){
+                    box.releaseCapture();
+                }
+                document.onmousemove = document.onmouseup = null;
+            }
+
+            // 在鼠标按下的时候阻止默认行为
+            return false;
+        }
+
+
+
+        //点击回放
+        btn.onclick = function () {
+            //设置一个定时器
+            var timer = window.setInterval(function () {
+                if (arr.length > 0) {
+                    // 每次删除数组末尾的最后一项
+                    var curData = arr.pop();
+                    // 每次删除的那一项是一个对象  
+                    box.style.left = curData.x + 'px';
+                    box.style.top = curData.y + 'px';
+                } else {
+                    window.clearInterval(timer);
+                }
+            }, 10);
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        body{
+            perspective: 2000px;
+        }
+        .outer{
+            position: relative;
+            width: 200px;
+            height: 300px;
+            margin: 50px auto;
+            transform: rotateX(-10deg) rotateY(30deg);
+            transform-style: preserve-3d;
+        }
+        .outer div{
+            position: absolute;
+            top: 0;
+            left: 0;
+            border: 1px solid black;
+        }
+        .top{
+            width: 200px;
+            height: 100px;
+            transform:rotateX(90deg) translateZ(50px);
+        }
+        .bottom{
+            width: 200px;
+            height: 100px;
+            transform:rotateX(-90deg) translateZ(250px);
+        }
+        .left{
+            width: 100px;
+            height: 300px;
+            transform:rotateY(-90deg) translateZ(50px);
+        }
+        .right{
+            width: 100px;
+            height: 300px;
+            transform:rotateY(90deg) translateZ(150px);
+        }
+        .back{
+            width: 200px;
+            height: 300px;
+            transform:translateZ(-50px);
+        }
+        .item{
+            width: 200px;
+            height: 100px;
+            background-color: lightblue;
+            transform-style: preserve-3d;
+            transition: transform .5s;
+        }
+        .item01{
+            transform:translateZ(50px);
+        }
+        .item02{
+            transform: translateZ(50px) translateY(100px);
+        }
+        .item03{
+            transform: translateZ(50px) translateY(200px);
+        }
+        .inner{
+            width: 200px;
+            height: 100px;
+            background-color: pink;
+            transform-origin: center bottom;
+            transform:rotateX(90deg);
+        }
+
+        .item01:hover{
+            transform:translateZ(80px);
+        }
+        .item02:hover{
+            transform: translateZ(80px) translateY(100px);
+        }
+        .item03:hover{
+            transform: translateZ(80px) translateY(200px);
+        }
+    </style>
+</head>
+<body>
+    <div class="outer">
+        <div class="top"></div>
+        <div class="bottom"></div>
+        <div class="left"></div>
+        <div class="right"></div>
+        <div class="back"></div>
+        <div class="item item01">
+            <div class="inner"></div>
+        </div>
+        <div class="item item02">
+            <div class="inner"></div>
+        </div>
+        <div class="item item03">
+            <div class="inner"></div>
+        </div>
+
+    </div>
+</body>
+</html>

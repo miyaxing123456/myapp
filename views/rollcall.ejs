@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="box"></div>
+    <button id="btn">点名</button>
+    <script>
+        var str=['皇后','甄嬛','华妃','安陵容','崔槿汐','沈眉庄','浣碧','敬贵妃','齐妃','欣贵人','宁贵人'];
+        var box=document.getElementById('box');
+        var btn=document.getElementById('btn');
+		
+        btn.onclick=function(){
+			 
+            if(btn.innerHTML=="点名"){
+				timer=setInterval(function(){
+                var n=Math.floor(Math.random()*str.length);
+                box.innerHTML=str[n];
+				
+				},10 );
+				btn.innerHTML="停止"
+			}else if(btn.innerHTML=="停止"){
+            clearInterval(timer);
+			btn.innerHTML="点名"
+			}
+			
+            
+		}
+			
+        
+       
+        
+        
+
+    
+    
+    
+    </script>
+</body>
+</html>

@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+
+<html>
+
+
+
+<head>
+
+	<title></title>
+
+	<style type="text/css">
+		html,
+
+		body {
+
+			margin: 0;
+
+			padding: 0;
+
+		}
+
+
+
+		div:not(:nth-of-type(2)) {
+
+			width: 500px;
+
+			height: 100%;
+
+			background-color: #00c4ff7a;
+
+			margin: 0 auto;
+
+		}
+
+
+
+		/*ul默认有外边距*/
+
+
+
+		ul {
+
+			width: 300px;
+
+			height: 100%;
+
+			background-color: #f9c3e6d6;
+
+			list-style: none;
+
+			/*清除默认边距*/
+
+			margin: 0;
+
+			padding: 0;
+
+			margin: 20px auto;
+
+			margin-bottom: 30px;
+
+		}
+
+
+
+		li {
+
+			width: 200px;
+
+			height: 30px;
+
+			line-height: 30px;
+
+			margin: 30px auto;
+
+			background-color: #cdffc0;
+
+		}
+	</style>
+
+</head>
+
+
+
+<body>
+
+	<div id="box">
+
+		<button id="btnAdd">添加元素</button>
+
+		<button id="btnRemove">删除元素</button>
+
+		<ul id="list">我是ul
+
+			<li>我是li1</li>
+
+			<li>我是li2</li>
+
+			<li>我是li3</li>
+
+		</ul>
+
+	</div>
+
+	<script type="text/javascript">
+
+		var box = document.getElementById('box');
+
+		var ulList = document.getElementById('list');
+
+		var btnAdd = document.getElementById('btnAdd');
+
+		var btnRemove = document.getElementById('btnRemove');
+
+
+		//var i=0;
+		for (var i = 0; i < ulList.children.length; i++) {
+
+			ulList.children.item(i).onmouseover = function () {
+
+				this.style.background = 'blue';
+
+			}
+
+			ulList.children.item(i).onmouseout = function () {
+
+				this.style.background = 'red';
+
+			}
+
+		}
+		//ulList.onmouseover=function(ev){
+		//ev.target.style.background="blue";
+		//}
+		//ulList.onmuseout=function(ev){
+		//ev.target.style.background="red";
+		//}
+
+		btnAdd.onclick = function () {
+
+			var li = document.createElement('li');
+
+			var txt = document.createTextNode('我是li' + (i + 1));
+
+			li.appendChild(txt);
+
+			ulList.appendChild(li);
+
+			i++;
+
+		}
+
+		btnRemove.onclick = function () {
+
+			if (ulList.children.length == 0) {
+
+				return;
+
+			}
+
+			var lastChild = ulList.lastElementChild
+
+			ulList.removeChild(lastChild);
+
+			i--;
+
+		}
+
+	</script>
+
+</body>
+
+
+
+</html>

@@ -1,0 +1,84 @@
+
+<!doctype HTML>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>作业</title>
+<style>
+ul{
+ width: 200px;
+ height: 210px;
+ background-color: blue;
+ list-style-type: none;
+ padding: 0;
+  } 
+li{
+ text-align: center;
+ padding: 10px;
+ border-bottom: 1px dotted lightgray;
+ position: relative;
+  }
+li:last-child{
+      border: none;
+	         }
+ol{
+  width: 100px;
+  background-color: green;
+  list-style-type: none;
+  padding: 0;
+  position: absolute;
+  left: 200px;
+  top: 0px;
+  display: none;
+  }
+li:hover>ol{
+         display: block;
+		    }
+ </style>
+</head>
+<body>
+   <ul>
+    <li>
+	<a>1</a>
+	<ol>
+	 <li>1</li>
+	 <li>2</li>
+	 <li>3</li>
+	</ol>
+	</li>
+	<li>
+	<a>2</a>
+	<ol>
+	 <li>1</li>
+	 <li>2</li>
+	</ol>
+	</li>
+	<li>
+	<a>3</a>
+	<ol>
+	 <li>1</li>
+	 <li>2</li>
+	</ol>
+	</li>
+	<li>
+	<a>4</a>
+	<ol>
+	 <li>1</li>
+	 <li>2</li>
+	 <li>2</li>
+	 <li>2</li>
+	</ol>
+	</li>
+	<li>
+	<a>5</a>
+	<ol>
+	 <li>1</li>
+	 <li>2</li>
+	 <li>2</li>
+	 <li>2</li>
+	 <li>2</li>
+	</ol>
+	</li>
+   </ul>
+</body>
+</html>

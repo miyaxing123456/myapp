@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .item{
+            position: relative;
+            width: 200px;
+            height: 40px;
+            border: 1px solid black;
+            margin: 10px auto;
+            
+        }
+        .bg{
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 200px;
+            height: 40px;
+            background-color: pink;
+        }
+        .txt{
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 200px;
+            height: 40px;
+            z-index: 1;
+            text-align: center;
+            /* 行高设置为height相同的值，单行文字垂直居中 */
+            line-height: 40px;
+        }
+        
+        .item01 .bg{
+            transform:scale(0,1);
+            transition: transform .5s;
+            transform-origin: right center;
+        }
+
+        .item01:hover .bg{
+            transform:scale(1,1);
+            transform-origin: left center; 
+        }
+		.item02 .bg{
+            transform:scale(0,0);
+            transition: transform .5s;
+            transform-origin: right bottom;
+        }
+
+        .item02:hover .bg{
+            transform:scale(1,1);
+            transform-origin: left top; 
+        }
+		.item03 .bg{
+            transform:scale(0,0);
+            transition: transform .5s;
+            transform-origin: bottom center;
+        }
+
+        .item03:hover .bg{
+            transform:scale(1,1);
+            transform-origin: top center; 
+        }
+    </style>
+</head>
+<body>
+    <div class="item item01">
+        <div class="txt">hover me</div>
+        <div class="bg"></div>
+    </div>
+    <div class="item item02">
+        <div  class="txt">hover me</div>
+        <div class="bg"></div>
+    </div>
+    <div class="item item03">
+        <div  class="txt">hover me</div>
+        <div class="bg"></div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+        }
+
+
+        .box{
+            width: 400px;
+            margin: 20px auto;
+        }
+
+        .box ul{
+            height: 35px;
+            line-height: 35px;
+        }
+
+        .box ul li{
+            float: left;
+            list-style: none;
+            width: 50px;
+            margin-right: 20px;
+            height: 35px;
+            line-height: 35px;
+            text-align: center;
+            border: 1px solid red;
+            border-bottom: none;
+        }
+
+        .box div{
+            width: 398px;
+            border: 1px solid red;
+            height: 398px;
+            display: none;
+        }
+
+        .box li.active{
+            background-color: red;
+        }
+
+        .box div.active{
+            display: block;
+        }
+    </style>
+</head>
+<body>
+<div id="box1" class="box">
+    <ul>
+        <li class="active">HTML</li>
+        <li>CSS</li>
+        <li>JS</li>
+    </ul>
+    <div class="active">HTML</div>
+    <div>CSS</div>
+    <div>JS</div>
+</div>
+<div id="box2" class="box">
+    <ul>
+        <li class="active">HTML</li>
+        <li>CSS</li>
+        <li>JS</li>
+    </ul>
+    <div class="active">HTML</div>
+    <div>CSS</div>
+    <div>JS</div>
+</div>
+<div id="box3" class="box">
+    <ul>
+        <li class="active">HTML</li>
+        <li>CSS</li>
+        <li>JS</li>
+    </ul>
+    <div class="active">HTML</div>
+    <div>CSS</div>
+    <div>JS</div>
+</div>
+<script>
+    // var box1 = document.getElementById("box1");
+    // var oLis = box1.getElementsByTagName("li");
+    // var oDivs = box1.getElementsByTagName("div");
+    //
+    // //绑定事件
+    // for (var i = 0; i <oLis.length; i++) {
+    //     oLis[i].index = i;
+    //     oLis[i].onclick = function () {
+    //         tabChange(this.index);
+    //     }
+    // }
+    //
+    // //实现选项卡切换的核心功能
+    // function tabChange(curIndex) {
+    // // 先把所有的激活样式都清空
+    //     for (var i = 0; i <oLis.length; i++) {
+    //         oLis[i].className = "";
+    //         oDivs[i].className = "";
+    //     }
+    //     //然后再让当前这个li和对应那个DIV有激活样式
+    //     oLis[curIndex].className = "active";
+    //     oDivs[curIndex].className = "active";
+    // }
+
+    //定义一个类
+    function Change(id) {
+        var box = document.getElementById(id);
+
+        //私有属性
+        this.oLis = box.getElementsByTagName("li");
+        this.oDivs = box.getElementsByTagName("div");
+		console.log(this);
+        //this缓存
+        var _this = this;
+        for (var i = 0; i <this.oLis.length; i++) {
+            this.oLis[i].index = i;
+            this.oLis[i].onclick = function () {
+				console.log(this);
+                _this.tabChange(this.index);
+            }
+        }
+    }
+
+
+    Change.prototype.tabChange = function (curIndex) {
+        // 先把所有的激活样式都清空
+		console.log(this);
+            for (var i = 0; i <this.oLis.length; i++) {
+                this.oLis[i].className = "";
+                this.oDivs[i].className = "";
+            }
+            //然后再让当前这个li和对应那个DIV有激活样式
+        this.oLis[curIndex].className = "active";
+        this.oDivs[curIndex].className = "active";
+    };
+
+    new Change("box1");
+    new Change("box2");
+    new Change("box3");
+</script>
+</body>
+</html>

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+    body{
+        perspective: 2000px;
+      }
+      img{
+        width: 200px;
+        height: 300px;
+      }
+    .cube{
+        width: 200px;
+        height: 300px;
+        position: relative;
+        margin: 200px auto;
+        transform-style: preserve-3d;
+        /* transform: rotateX(-15deg); */
+        animation: zhuan_ani 6s infinite linear;
+    }
+    .cube div{
+        width: 200px;
+        height: 300px;
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
+    .t1{
+        transform: translateZ(-350px);
+    }
+    .t2{
+        transform:  translateZ(350px);
+    }
+    .t3{
+        transform: rotateY(-45deg) translateZ(345px);
+    }
+    .t4{
+        transform: rotateY(-90deg) translateZ(345px);
+    }
+   .t5{
+        transform: rotateY(-135deg) translateZ(345px);
+    }
+    .t6{
+        transform: rotateY(45deg) translateZ(345px);
+    }
+     .t7{
+        transform: rotateY(90deg) translateZ(345px);
+    }
+  .t8{
+        transform: rotateY(135deg) translateZ(345px);
+    }
+    @keyframes zhuan_ani {
+        0%{
+            /* transform: rotate3d(0,1,0,-15deg); */
+            transform: rotateY(-15deg) rotate(0deg);
+        }
+        100%{
+            /* transform:  rotate3d(0,1,0,720deg);*/
+             transform:  rotateY(720deg) rotate(-15deg);
+        }
+    }
+</style>
+</head>
+<body>
+    <div class="cube">
+        <div class="t1"><img src="images/22.jpg"></div>
+        <div class="t2"><img src="images/111.jpg"></div>
+        <div class="t3"><img src="images/zhengkai.png"></div>
+        <div class="t4"><img src="images/baby.png"></div>
+        <div class="t5"><img src="images/chenhe.png"></div>
+        <div class="t6"><img src="images/dengchao.png"></div>
+        <div class="t7"><img src="images/dilireba.png"></div>
+        <div class="t8"><img src="images/luhan.png"></div>
+    </div>
+</body>
+</html>

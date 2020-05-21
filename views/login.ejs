@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+    <meta charset="UTF-8">
+
+<title>Document</title>
+
+<style type="text/css">
+
+body{
+
+margin: 0;
+
+padding: 0;
+
+}
+
+.contanter{
+
+width: 1200px;
+
+height: 800px;
+
+margin: 10px auto;
+
+background: #eee;
+
+position: relative;
+
+}
+
+.contanter__heading{
+
+height: 30px;
+
+background: #0099e5;
+
+color: #fff;
+
+text-indent: 30px;
+
+line-height: 30px;
+
+}
+
+.contanter__subheading{
+
+width: 800px;
+
+height: 400px;
+
+position: absolute;
+
+left: 50%;
+
+margin-left: -320px;
+
+top: 200px;
+
+
+
+}
+
+.contanter__subheading-table{
+
+text-align: right;
+
+}
+
+
+
+.contanter__subheading-table tr td{
+
+height: 35px;
+
+}
+
+
+
+        .contanter__subheading-table tr td:last-child{
+
+         text-align: left;
+
+         color: red;
+
+         font-size: 12px;
+
+         width: 300px;
+
+        }
+
+.contanter__subheading-submit{
+
+width: 60px;
+
+height: 30px;
+
+text-align: center;
+
+line-height: 30px;
+
+border: 1px solid #000;
+
+border-radius: 5px;
+
+background: #0099e5;
+
+position: absolute;
+
+left: 50%;
+
+top: 410px;
+
+margin-left: -120px;
+
+}
+
+.contanter__subheading-submit:hover{
+
+cursor: pointer;
+
+background: orange;
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+    <div class="contanter">
+
+<div class="contanter__heading">用户注册</div>
+
+<div class="contanter__subheading">
+
+<table cellspacing="10px" class="contanter__subheading-table">
+
+<!-- 第一行 -->
+
+<tr>
+
+<td>用户名:</td>
+
+<td><input type="text" id="userName"></td>
+
+<td id="userNameTip"></td>
+
+</tr>
+
+<!-- 第二行 -->
+
+<tr>
+
+<td>登录密码:</td>
+
+<td><input type="password" id="passWord"></td>
+
+<td id="passWordTip"></td>
+
+</tr>
+
+<!-- 第三行 -->
+
+<tr>
+
+<td>确认密码:</td>
+
+<td><input type="password" id="repPassword"></td>
+
+<td id="repPasswordTip"></td>
+
+</tr>
+
+<!-- 第四行 -->
+
+<tr>
+
+<td>姓名:</td>
+
+<td><input type="text" id="realName"></td>
+
+<td id="realNameTip"></td>
+
+</tr>
+
+<!-- 第五行 -->
+
+<tr>
+
+<td>性别:</td>
+
+<td>
+
+<select id="sex">
+
+            <option>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;男&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</option>
+
+            <option>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;女&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</option>
+
+            </select>
+
+</td>
+
+<td></td>
+
+</tr>
+
+<!-- 第六行 -->
+
+<tr>
+
+<td>身份证号码:</td>
+
+<td><input type="text" id="idNum"></td>
+
+<td id="idNumTip"></td>
+
+</tr>
+
+<!-- 第七行 -->
+
+<tr>
+
+<td>邮箱:</td>
+
+<td><input type="text" id="eMail"></td>
+
+<td id="eMailTip"></td>
+
+</tr>
+
+<!-- 第八行 -->
+
+<tr>
+
+<td>手机号码:</td>
+
+<td><input type="text" id="phoneNum"></td>
+
+<td id="phoneNumTip"></td>
+
+</tr>
+
+</table>
+
+<div class="contanter__subheading-submit" id="submit">提交</div>
+
+</div>
+
+</div>
+
+<script type="text/javascript">
+
+//获取dom元素
+
+var domList = {
+
+userName:document.querySelector('#userName'),
+
+        passWord:document.querySelector('#passWord'),
+
+        repPassword:document.querySelector('#repPassword'),
+
+        realName:document.querySelector('#realName'),
+
+        sex:document.querySelector('#sex'),
+
+        idNum:document.querySelector('#idNum'),
+
+        eMail:document.querySelector('#eMail'),
+
+        phoneNum:document.querySelector('#phoneNum'),
+
+        userNameTip:document.querySelector('#userNameTip'),
+
+        passWordTip:document.querySelector('#passWordTip'),
+
+        repPasswordTip:document.querySelector('#repPasswordTip'),
+
+        realNameTip:document.querySelector('#realNameTip'),
+
+        idNumTip:document.querySelector('#idNumTip'),
+
+        eMailTip:document.querySelector('#eMailTip'),
+
+        phoneNumTip:document.querySelector('#phoneNumTip'),
+
+        subMit:document.querySelector('#submit')
+
+}
+
+    var pattern = {
+
+     userName:/^[a-zA-Z]\w{5,19}$/,
+
+     passWord:/^\S{6,18}$/,
+
+     realName:/^[\u4e00-\u9fa5]{2,4}$/,
+
+     idNum:/^\d{17}[\da-zA-Z]$/,
+
+     eMail: /^[a-z0-9]+(?:[._-][a-z0-9]+)*@[a-z0-9]+(?:[._-][a-z0-9]+)*\.[a-z]{2,4}$/i,
+
+     phoneNum:/^1[3458]\d{9}$/
+
+    };
+
+
+
+    var Tips = {
+
+     userName:'6-20位字母、数字或“_”，字母开头',
+
+     passWord:'请输入6-18位密码，包括数字字母或符号，中间不能有空格',
+
+     repPassword:'两次密码输入不一致',
+
+     realName:'真实姓名为两位到四位的中文',
+
+     idNum:'请输入18位身份证号码',
+
+     eMail:'邮箱格式不正确',
+
+     phoneNum:'电话号码不正确'
+
+    }
+
+
+
+    //绑定事件
+
+    //第二次精简版本
+
+    function setElem(ele,eleTip){
+
+     ele.addEventListener('blur',function(){
+
+     if(pattern[this.id].test(this.value)){
+
+                eleTip.innerText = 'OK';
+
+     }else{
+
+     eleTip.innerText = Tips[this.id]
+
+     }
+
+     })
+
+    }
+
+    setElem(domList.userName,domList.userNameTip);
+
+    setElem(domList.passWord,domList.passWordTip);
+
+    setElem(domList.realName,domList.realNameTip);
+
+    setElem(domList.idNum,domList.idNumTip);
+
+    setElem(domList.eMail,domList.eMailTip);
+
+    setElem(domList.phoneNum,domList.phoneNumTip);
+
+    //验证两次输入密码是否一致
+
+    domList.repPassword.addEventListener('blur',function(){
+
+     if(domList.passWord.value === domList.repPassword.value){
+
+     domList.repPasswordTip.innerText = 'OK';
+
+     }else{
+
+     domList.repPasswordTip.innerText = Tips[this.id];
+
+     }
+
+    })
+
+    //验证按钮事件
+
+    function checkElem(ele,eleTip){
+
+        if(!pattern[ele.id].test(ele.value)){
+
+         eleTip.innerText = Tips[ele.id];
+
+        }
+
+    }
+
+    domList.subMit.addEventListener('click',function(){
+
+     if(pattern.userName.test(domList.userName.value)&&pattern.passWord.test(domList.passWord.value)&&domList.passWord.value === domList.repPassword.value&&pattern.realName.test(domList.realName.value)&&pattern.idNum.test(domList.idNum.value)&&pattern.eMail.test(domList.eMail.value)&&pattern.phoneNum.test(domList.phoneNum.value)){
+
+     alert('验证通过');
+
+     }else{
+
+     alert('验证失败');
+
+            checkElem(domList.userName,domList.userNameTip);
+
+            checkElem(domList.passWord,domList.passWordTip);
+
+            checkElem(domList.realName,domList.realNameTip);
+
+            checkElem(domList.idNum,domList.idNumTip);
+
+            checkElem(domList.eMail,domList.eMailTip);
+
+            checkElem(domList.phoneNum,domList.phoneNumTip);
+
+     }
+
+    })
+
+    </script>
+
+
+
+</body>
+
+</html>

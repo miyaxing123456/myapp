@@ -1,0 +1,67 @@
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+        }
+
+        #box{
+            width: 600px;
+            height: 50px;
+            margin: 50px auto;
+            line-height: 50px;
+            color: red;
+            font-weight:bold;
+            background-color: rebeccapurple;
+        }
+    </style>
+</head>
+<body>
+    <div id="box">距离中午吃饭还有：<span id="show">0天3小时10分25秒</span></div>
+    <script>
+        //给span赋值初始值
+        var show = document.getElementById("show");
+        show.innerHTML = downCount("2021/01/01 00:00");
+
+        //每一秒钟调用一次   本地时间是变化  毫秒差值是边的导致页面中的值是变的
+        window.setInterval(function(){
+            show.innerHTML = downCount("2021/01/01 00:00");
+        },1000);
+
+        //实现将毫秒差转为天时分秒的功能
+        //timeStr:时间的字符串（未来的某个时间）
+        function downCount(timeStr){
+            //创建本地时间
+            var localDate = new Date();
+            //获取本地时间的毫秒差
+            var localMillSeconds = localDate.getTime();
+            //创建未来的时间
+            var fuDate = new Date(timeStr);
+            //获取未来时间的毫秒差
+            var fuMillSeconds = fuDate.getTime();
+
+            //未来某个时间与当前时间的毫秒差值 (转为秒)
+            var diffSeconds =  (fuMillSeconds - localMillSeconds)/1000;
+
+            //将获取到的秒的差值转为 天  时  分  秒    60*60*24 ===>86400
+            var day = parseInt(diffSeconds/86400);
+            var hour = parseInt(diffSeconds%86400/3600);
+            var miutes = parseInt(diffSeconds%3600/60);
+            var seconds = parseInt(diffSeconds%60);
+
+            return  zeroValue(day) + "天 " + zeroValue(hour) + "时 " + zeroValue(miutes) + "分 " + zeroValue(seconds) + "秒;"
+        }
+
+
+        //补零操作
+        function zeroValue(value){
+            return value<10?"0"+value:value;
+        }
+    </script>
+</body>
+</html>

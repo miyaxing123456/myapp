@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .box{
+            position: relative;
+            width: 300px;
+            height: 300px;
+            border: 1px solid black;
+            margin: 0 auto;
+        }
+        .box div{
+            position: absolute;
+            width: 98px;
+            height: 98px;
+            border: 1px solid black;
+            text-align: center;
+            line-height: 98px;
+        }
+        .item01{
+            left: 0;
+            top: 0;
+        }
+        .item02{
+            left: 100px;
+            top: 0;
+        }
+        .item03{
+            left: 200px;
+            top: 0;
+        }
+        .item04{
+            left: 200px;
+            top: 100px;
+        }
+        .item05{
+            left: 200px;
+            top: 200px;
+        }
+        .item06{
+            left: 100px;
+            top: 200px;
+        }
+        .item07{
+            left: 0px;
+            top: 200px;
+        }
+        .item08{
+            left: 0;
+            top: 100px;
+        }
+        .btn{
+            left: 100px;
+            top: 100px;
+            background-color: lightgreen;
+            font-size: 20px;
+            color: red;
+        }
+        #end{
+            position: absolute;
+            width: 300px;
+            height: 100px;
+            background-color: rgba(0,0,0,0.4);
+            font-size: 30px;
+            color: yellow;
+            text-align: center;
+            line-height: 100px;
+            left: 0;
+            top: 100px;
+            visibility: hidden;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <div class="item item01">iphone 11</div>
+        <div class="item item02">500代金券</div>
+        <div class="item item03">免单</div>
+        <div class="item item04">谢谢参与</div>
+        <div class="item item05">mac</div>
+        <div class="item item06">ipad</div>
+        <div class="item item07">键盘</div>
+        <div class="item item08">奔驰</div>
+        <div class="btn">开始抽奖</div>
+        <div id="end">恭喜获得XX</div>
+    </div>
+
+
+    <script>    
+        var items = document.getElementsByClassName('item'); 
+        var btn = document.getElementsByClassName('btn')[0];
+        var end = document.getElementById('end');
+		function btnclick(){
+			btn.onclick=null;
+			var prize = Math.floor(Math.random()*items.length);  // prize代表随机出来的奖项
+            console.log(prize);
+            var count = 0; //count记录转动的圈数
+            var n = 0;  //n表示滚动动效时，当前变色奖项的索引值
+            items[n].style.backgroundColor = "gold";   //点击抽奖按钮时，先让第一个奖项变色
+            var timer=setInterval(function(){  //设置一个定时器，每隔300毫秒n加1，取到索引为n的变金色，上一个（n-1）恢复成白色
+                n++;
+                if(n == 8){  // 超过最大索引，设置成0,循环滚动
+                    n = 0;
+                    count++; 
+                    console.log(count);
+                }
+                items[n].style.backgroundColor = "gold";
+                if(n == 0){
+                    items[7].style.backgroundColor = "white";
+                }else{
+                    items[n-1].style.backgroundColor = "white";
+                }
+                if(count == 5){  // 圈数到达5圈
+                    if(n == prize){ //并且转动到随机出来的奖项时，停止定时器
+                        clearInterval(timer);
+                        //设置并显示获奖结果
+                        end.innerHTML = "恭喜获得" + items[prize].innerHTML;
+                        end.style.visibility = "visible";
+                    }
+                }
+                
+               /*  if(n == prize && count == 5){
+                    clearInterval(timer);
+                } */
+               
+            },100)
+		}
+        btn.onclick = btnclick;
+    </script>
+</body>
+</html>

@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>练习</title>
+    <style type="text/css">
+        *{
+            padding:0;
+            margin:0;
+        }
+        #container{
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+        .tool{
+            width: 300px;
+            height: 300px;
+            background-color: #fff;
+            box-shadow: 4px 2px 5px #000;
+            position: absolute;
+            top: 5px;
+            left: 5px;
+            z-index: 99;
+        }
+        .toolBar{
+            height: 30px;
+            /*background-color: yellow;*/
+            font-size: 16px;
+            text-align: center;
+            font-weight: bold;
+            margin-top: 13px;
+        }
+        .serCity,.serLevel{
+            width: 100%;
+            height: 25px;
+            /*background-color: yellow;*/
+            overflow: hidden;
+            margin-bottom: 5px;
+        }
+        .serCity span,.serLevel span{
+            display: block;
+            float: left;
+            width: 85px;
+            height: 25px;
+            line-height: 25px;
+            text-align: right;
+            margin-right: 2px;
+            font-size: 14px;
+        }
+        .serCityNode,.serLevelNode{
+            display: block;
+            float: left;
+            width: 130px;
+            height: 20px;
+        }
+        .serCityBtn,.serLevelBtn{
+            float: left;
+            width: 50px;
+            height: 25px;
+            line-height: 25px;
+            text-align: center;
+            background-color: #1e90ff;
+            color: #fff;
+            margin-left: 15px;
+            font-size: 14px;
+            cursor: pointer;
+        }
+        .clearLimit{
+            width: 100px;
+            height: 25px;
+            font-size: 14px;
+            text-align: center;
+            line-height: 25px;
+            background-color:#b0c4de;
+            margin-left: 86px;
+            cursor: pointer;
+        }
+        .city{
+            font-size: 12px;
+            width: 295px;
+            /*background-color: red;*/
+            position: absolute;
+            bottom: 5px;
+            left: 0;
+            text-align: right;
+        }
+    </style>
+    <script type="text/javascript" src="https://webapi.amap.com/maps?v=1.4.15&key=cb69790e8e6a542549849df008420344"></script>
+</head>
+<body>
+    <div id="container"></div>
+    <div class="tool">
+        <div class="toolBar">工具栏</div>
+        <div class="serCity">
+            <span>搜索城市</span>
+            <input type="text" class="serCityNode">
+            <div class="serCityBtn">确定</div>
+        </div>
+        <div class="serLevel">
+            <span>设置显示级别</span>
+            <input type="text" class="serLevelNode">
+            <div class="serLevelBtn">确定</div>
+        </div>
+        <div class="clearLimit">解除范围限制</div>
+        <div class="city">
+            当前所在省/直辖市：<span class="cityChange">北京市</span>
+        </div>
+    </div>
+    <script type="text/javascript">
+        var map=new AMap.Map("container");
+        var myBounds=new AMap.Bounds([116.22422,39.813285],[116.567542,39.997639]);
+        map.setBounds(myBounds);
+        //限制显示范围
+        var bjBounds=map.getBounds();
+        map.setLimitBounds(bjBounds);
+        //获取元素
+        var serCityNode=document.querySelector(".serCityNode"),
+            serCityBtn=document.querySelector(".serCityBtn"),
+            serLevelNode=document.querySelector(".serLevelNode"),
+            serLevelBtn=document.querySelector(".serLevelBtn"),
+            clearLimit=document.querySelector(".clearLimit"),
+            cityChange=document.querySelector(".cityChange"),
+            isTrue=true;
+        //解除限制
+        clearLimit.onclick=function(){
+            if(isTrue){
+                map.clearLimitBounds();
+                clearLimit.innerHTML="已解除范围限制";
+                isTrue=false;
+            }else{
+                map.setLimitBounds(bjBounds);
+                clearLimit.innerHTML="解除范围限制";
+                isTrue=true;
+            }
+        };
+        //设置城市
+        serCityBtn.onclick=function(){
+            map.setCity(serCityNode.value);
+        };
+        //设置级别
+        serLevelBtn.onclick=function(){
+            map.setZoom(serLevelNode.value);
+        };
+        // 点击设置中心点
+        map.on("click",function(e){
+            var x=e.lnglat.lng;
+            var y=e.lnglat.lat;
+            console.log(x,y);
+            map.setCenter([x,y]);
+            // console.log(map.getCenter());
+        });
+        //显示当前省市
+        map.on("moveend",function(){
+            map.getCity(function(info){
+                if(info.city==''){
+                    cityChange.innerHTML=info.province+'/'+info.district;
+                }else{
+                    cityChange.innerHTML=info.province+'/'+info.city;
+                }
+            });
+            // map.getCity(function(info){
+            //     console.log(info);
+            // });
+        });
+        // console.log(map.getCenter());
+    </script>
+</body>
+</html>

@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        div {
+            width: 200px;
+            height: 200px;
+            background-color: red;
+            position: absolute;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="box" style="left: 0;top: 0;">1</div>
+    <div id="box1" style="left: 200px;top: 200px;">2</div>
+    <div id="box2" style="left: 400px; top: 400px;">3</div>
+    <script>
+        //获取要操作的元素
+        // var box = document.getElementById("box");
+        // box.onmousedown = function (ev) {
+        //     ev = ev || window.event;
+        //     //兼容IE拖拽问题文本 图片 元素锁定
+        //     if (box.setCapture) {
+        //         box.setCapture();
+        //     }
+        //     //获取鼠标距离这个盒子的距离
+        //     var x = ev.clientX - box.offsetLeft;
+        //     var y = ev.clientY - box.offsetTop;
+
+        //     document.onmousemove = function (ev) {
+        //         ev = ev || window.event;
+
+        //         //确定盒子的位置
+        //         var left = ev.clientX - x;
+        //         var top = ev.clientY - y;
+
+        //         //设置
+        //         box.style.left = left + 'px';
+        //         box.style.top = top + 'px';
+
+        //     }
+
+        //     document.onmouseup = function () {
+        //         //元素解除锁定
+        //         if (box.releaseCapture) {
+        //             box.releaseCapture();
+        //         }
+        //         document.onmousemove = document.onmouseup = null;
+        //     }
+
+        //     //阻止默认行为  文本或图片拖拽问题
+        //     return false;
+        // }
+    </script>
+    <script>
+        //获取要操作的元素
+        //拖拽类
+        function Drag(id) {
+            var _this = this;
+            //元素是私有的
+            this.box = document.getElementById(id);
+            //鼠标距离当前这个元素距离 (存储鼠标距离当前这个元素距离 )
+            this.x = null;
+            this.y = null;
+
+            //给当前拖拽的那个元素绑定事件
+            this.box.onmousedown = function (ev) {
+                //事件对象的兼容处理
+                ev = ev || window.event;
+                //兼容IE拖拽问题文本 图片 元素锁定
+                if (box.setCapture) {
+                    box.setCapture();
+                }
+                //this:当前触发的那个元素
+                // 调用当前实例原型上的方法
+                _this.dragDown(ev);
+
+                //阻止文本或图片的默认行为
+                return false;
+            }
+        }
+
+
+        //给Drag这个类批量扩展公有的属性或方法
+        Drag.prototype = {
+            //重写constructor属性
+            constructor: Drag,
+            // 鼠标按下时候对应的方法
+            dragDown: function (ev) {
+                //保存鼠标距离当前这个元素距离
+                this.x = ev.clientX - this.box.offsetLeft;
+                this.y = ev.clientY - this.box.offsetTop;
+
+                //this缓存
+                var _this = this;
+                //鼠标移动
+                document.onmousemove = function (ev) {
+                    ev = ev || window.event;
+                    _this.dragMove(ev);
+                }
+
+                //鼠标抬起
+                document.onmouseup = function () {
+                    _this.dragUp();
+                }
+            },
+            //鼠标移动公共的方法
+            dragMove: function (ev) {
+                //确定盒子的位置
+                var left = ev.clientX - this.x;
+                var top = ev.clientY - this.y;
+                //设置盒子的位置
+                this.box.style.left = left + 'px';
+                this.box.style.top = top + 'px';
+            },
+            //鼠标抬起公共的方法
+            dragUp: function () {
+                //元素解除锁定
+                if (box.releaseCapture) {
+                    box.releaseCapture();
+                }
+                document.onmousemove = document.onmouseup = null;
+            }
+        }
+
+
+
+        //实现box的拖拽
+        var box = new Drag("box");
+        var box1 = new Drag("box1");
+        var box2 = new Drag("box2");
+
+        console.log(box, box1, box2);
+    </script>
+</body>
+
+</html>

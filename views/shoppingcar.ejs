@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            list-style: none;
+            font-style: normal
+        }
+
+        button {
+            width: 30px;
+        }
+
+        span {
+            display: inline-block;
+            width: 30px;
+            text-align: center;
+        }
+
+        #app {
+            width: 100px;
+        }
+    </style>
+</head>
+
+<body>
+    <ul id="products">
+        <li>
+            <input type="checkbox">辣子鸡丁
+            单价 <i>10</i>
+            <button class="cut">-</button>
+            <span>0</span>
+            <button class="add">+</button>
+            小计：<em>0</em>
+        </li>
+        <li>
+            <input type="checkbox">小炒肉
+            单价 <i>99.9</i>
+            <button class="cut">-</button>
+            <span>0</span>
+            <button class="add">+</button>
+            小计：<em>0</em>
+        </li>
+        <li>
+            <input type="checkbox">老干妈
+            单价 <i>100</i>
+            <button class="cut">-</button>
+            <span>0</span>
+            <button class="add">+</button>
+            小计：<em>0</em>
+        </li>
+        <li>
+            <input type="checkbox">蛋炒饭
+            单价 <i>9.9</i>
+            <button class="cut">-</button>
+            <span>0</span>
+            <button class="add">+</button>
+            小计：<em>0</em>
+        </li>
+    </ul>
+    <p id="show">一共0件商品，总共0元</p>
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script>
+        // 增加
+        $("#products .add").click(function () {
+            //获取数量  
+            // 不管是原生JS还是jQuery中获取到元素中的内容都是字符串
+            var n = $(this).prev().html(); //++  -- *  / %  -都存在 隐式转换
+            //每点击一次就累计加1
+            n++;
+            // 重新给数量赋值
+            $(this).prev().html(n);
+
+            //给小计进行赋值
+            $(this).next().html(($(this).siblings("i").html() * $(this).prev().html()).toFixed(2));
+
+            //点击的时候也进行求和
+            sum();
+        });
+        //减少
+        $("#products .cut").click(function () {
+            //获取数量  
+            // 不管是原生JS还是jQuery中获取到元素中的内容都是字符串
+            var n = $(this).next().html(); //++  -- *  / %  -都存在 隐士转换
+            //每点击一次就累计加1
+            n--;
+            n === -1 ? n = 0 : n;
+            // 重新给数量赋值
+            $(this).next().html(n);
+
+            //给小计进行赋值
+            $(this).siblings("em").html(($(this).siblings("i").html() * $(this).next().html()).toFixed(2));
+
+            //点击的时候也进行求和
+            sum();
+        });
+
+        //选中
+        $("input:checkbox").click(function () {
+            sum();
+        });
+
+        //求和  
+        function sum() {
+            //求总共的件数：totalCount  总的钱数:totalMoney
+            var totalCount = 0,
+                totalMoney = 0;
+            //获取选中的checkbox
+            $("input:checkbox:checked").each(function (index, ele) {
+                //拿到被选中的每一个checkbox   并且获取到的每一个选中的checkbox都是原生的JS对象我们要使用jQuery的方法需要转为jQuery对象
+
+                //做累加操作
+                totalCount += parseInt($(ele).siblings("span").html());
+                totalMoney += parseFloat($(ele).siblings("em").html());
+
+            });
+
+            //给p标签进行赋值
+            $("p").html("一共" + totalCount + "件商品,总共" + totalMoney.toFixed(2) + "元");
+        }
+    </script>
+</body>
+
+</html>

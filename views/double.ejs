@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .box{
+            float: left;
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            font-size: 40px;
+            line-height: 100px;
+            text-align: center;
+            background-color: red;
+            margin: 20px;
+        }
+        
+    </style>
+</head>
+<body>
+    <button id="btn">开始</button>
+    <div>
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+    </div>
+    <script>
+        var btn=document.getElementById('btn');
+        var boxs=document.getElementsByClassName('box');
+        var numb=[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19];
+        btn.onclick=function(){
+                var count=0;
+                var m=0  
+                var time=setInterval(function(){
+                count++;
+                var x=Math.floor(Math.random()*numb.length)
+                boxs[m].innerHTML=numb[x];
+                    if(count==10){
+                        boxs[m].innerHTML=numb[x];
+                        m++
+                        count=0
+                        //if(m==boxs.length){
+                        //    clearInterval(time);
+                        //}
+                    }
+					if(m==boxs.length){
+                           clearInterval(time);
+                        }
+                    
+                },100)  
+
+            }
+    
+    
+    </script>
+</body>
+</html>
